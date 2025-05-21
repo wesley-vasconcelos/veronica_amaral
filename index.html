@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verônica Amaral - Fisioterapeuta</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #9c27b0;
+            --secondary-color: #00bcd4;
+            --accent-color: #ff4081;
+            --dark-color: #333;
+            --light-color: #f8f8f8;
+            --text-color: #444;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            overflow-x: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M50 15 C60 25, 80 25, 90 15 C100 5, 100 -5, 90 -15" stroke="rgba(255,255,255,0.1)" fill="none" stroke-width="2" /></svg>');
+            background-size: 400px;
+            animation: moveBg 20s linear infinite;
+            z-index: 1;
+            opacity: 0.3;
+        }
+        
+        @keyframes moveBg {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 1000px 500px;
+            }
+        }
+        
+        .profile-container {
+            position: relative;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .profile-container:hover {
+            transform: scale(1.05);
+        }
+        
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        
+        .title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .cta-button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin-top: 1rem;
+        }
+        
+        .cta-button:hover {
+            background-color: #e91e63;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        .section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+        }
+        
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+        
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .experience-item {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            border-left: 3px solid var(--secondary-color);
+            position: relative;
+        }
+        
+        .experience-title {
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+            color: var(--dark-color);
+        }
+        
+        .experience-place {
+            font-weight: 500;
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+            color: var(--primary-color);
+        }
+        
+        .experience-date {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 0.5rem;
+        }
+        
+        .experience-desc {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .skill-item {
+            background-color: rgba(156, 39, 176, 0.1);
+            padding: 0.7rem 1.2rem;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-item:hover {
+            background-color: rgba(156, 39, 176, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        .skill-icon {
+            font-size: 1.2rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1rem;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-text {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        /* Animação de exercícios */
+        .exercise-animation {
+            width: 100%;
+            height: 200px;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            background-color: rgba(0, 188, 212, 0.1);
+        }
+        
+        .exercise-figure {
+            position: absolute;
+            width: 60px;
+            height: 120px;
+            background-color: var(--primary-color);
+            border-radius: 30px 30px 0 0;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            transform-origin: bottom center;
+            animation: exercise 3s infinite ease-in-out;
+        }
+        
+        .exercise-head {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .exercise-arm-left, .exercise-arm-right {
+            position: absolute;
+            width: 60px;
+            height: 10px;
+            background-color: var(--primary-color);
+            top: 20px;
+            border-radius: 5px;
+            transform-origin: 5px center;
+        }
+        
+        .exercise-arm-left {
+            left: -5px;
+            animation: armLeft 3s infinite ease-in-out;
+        }
+        
+        .exercise-arm-right {
+            right: -5px;
+            animation: armRight 3s infinite ease-in-out;
+        }
+        
+        .exercise-leg-left, .exercise-leg-right {
+            position: absolute;
+            width: 10px;
+            height: 50px;
+            background-color: var(--primary-color);
+            bottom: -40px;
+            border-radius: 5px;
+            transform-origin: top center;
+        }
+        
+        .exercise-leg-left {
+            left: 15px;
+            animation: legLeft 3s infinite ease-in-out;
+        }
+        
+        .exercise-leg-right {
+            right: 15px;
+            animation: legRight 3s infinite ease-in-out;
+        }
+        
+        @keyframes exercise {
+            0%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(-20px);
+            }
+        }
+        
+        @keyframes armLeft {
+            0%, 100% {
+                transform: rotate(-30deg);
+            }
+            50% {
+                transform: rotate(30deg);
+            }
+        }
+        
+        @keyframes armRight {
+            0%, 100% {
+                transform: rotate(30deg);
+            }
+            50% {
+                transform: rotate(-30deg);
+            }
+        }
+        
+        @keyframes legLeft {
+            0%, 100% {
+                transform: rotate(-10deg);
+            }
+            50% {
+                transform: rotate(20deg);
+            }
+        }
+        
+        @keyframes legRight {
+            0%, 100% {
+                transform: rotate(10deg);
+            }
+            50% {
+                transform: rotate(-20deg);
+            }
+        }
+        
+        /* Animação de pulso */
+        .pulse-animation {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+            animation: pulse 3s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: translateY(0) scaleY(1);
+                opacity: 0;
+            }
+            50% {
+                transform: translateY(0) scaleY(3);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(0) scaleY(1);
+                opacity: 0;
+            }
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .name {
+                font-size: 2rem;
+            }
+            
+            .title {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .about-text {
+                font-size: 1rem;
+            }
+            
+            .profile-container {
+                width: 180px;
+                height: 180px;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .about-content {
+                flex-direction: row;
+            }
+            
+            .about-text {
+                flex: 1;
+            }
+            
+            .exercise-animation {
+                flex: 1;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-bg"></div>
+        <div class="header-content">
+            <div class="profile-container">
+                <img src="profile.png" alt="Verônica Amaral" class="profile-img">
+            </div>
+            <h1 class="name">Verônica Amaral</h1>
+            <h2 class="title">Fisioterapeuta</h2>
+            <button class="cta-button" id="contactBtn">Agende sua Consulta</button>
+        </div>
+    </header>
+    
+    <main>
+        <section class="section" id="about">
+            <h2 class="section-title">Sobre Mim</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Acredito que a fisioterapia tem um impacto transformador na vida das pessoas, e estou dedicada a fazer a diferença como profissional. Formada em Fisioterapia pela Universidade Nove de Julho (Uninove), busco constantemente aprimorar meus conhecimentos e técnicas para oferecer o melhor atendimento possível.</p>
+                    <p>Minha abordagem é centrada no paciente, com foco em tratamentos personalizados que promovem não apenas a recuperação física, mas também o bem-estar geral. Sou apaixonada por ajudar pessoas a superarem limitações e recuperarem sua qualidade de vida através de técnicas terapêuticas eficazes e inovadoras.</p>
+                </div>
+                <div class="exercise-animation">
+                    <div class="exercise-figure">
+                        <div class="exercise-head"></div>
+                        <div class="exercise-arm-left"></div>
+                        <div class="exercise-arm-right"></div>
+                        <div class="exercise-leg-left"></div>
+                        <div class="exercise-leg-right"></div>
+                    </div>
+                    <div class="pulse-animation"></div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section" id="experience">
+            <h2 class="section-title">Experiência Profissional</h2>
+            <div class="experience-item">
+                <h3 class="experience-title">Estagiária em Fisioterapia Hospitalar</h3>
+                <p class="experience-place">Hospital Mandaqui - São Paulo, SP</p>
+                <p class="experience-date">Outubro 2024 - Dezembro 2024</p>
+                <p class="experience-desc">Atendimento Fisioterapêutico hospitalar. Avaliação do quadro clínico de pacientes internados, realizando exercícios de acordo com a necessidade de cada paciente.</p>
+            </div>
+            <div class="experience-item">
+                <h3 class="experience-title">Estagiária em Fisioterapia Geral</h3>
+                <p class="experience-place">CER - Centro Especializado em Reabilitação - São Paulo, SP</p>
+                <p class="experience-date">Agosto 2024 - Setembro 2024</p>
+                <p class="experience-desc">Atuação em Fisioterapia geral. Prestação de um atendimento humanizado ao paciente, garantindo a satisfação com o serviço.</p>
+            </div>
+            <div class="experience-item">
+                <h3 class="experience-title">Estagiária em Fisioterapia Especializada</h3>
+                <p class="experience-place">Ambulatório Uninove - São Paulo, SP</p>
+                <p class="experience-date">Fevereiro 2024 - Julho 2024</p>
+                <p class="experience-desc">Atuação nas áreas de Neurologia (Adulto e Pediatria), Ortopedia (Adulto) e Cardiorrespiratória (Adulto e Pediatria).</p>
+            </div>
+        </section>
+        
+        <section class="section" id="education">
+            <h2 class="section-title">Formação Acadêmica</h2>
+            <div class="experience-item">
+                <h3 class="experience-title">Bacharelado em Fisioterapia</h3>
+                <p class="experience-place">Universidade Nove de Julho - Uninove - São Paulo</p>
+                <p class="experience-date">Fevereiro 2020 - Dezembro 2024</p>
+                <p class="experience-desc">Formação completa em Fisioterapia, com foco em diversas especialidades como Neurologia, Ortopedia e Cardiorrespiratória, tanto para público adulto quanto pediátrico.</p>
+            </div>
+        </section>
+        
+        <section class="section" id="skills">
+            <h2 class="section-title">Habilidades e Competências</h2>
+            <div class="skills-container">
+                <div class="skill-item">
+                    <span class="skill-icon">❤️</span>
+                    <span>Atendimento Humanizado</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-icon">🧠</span>
+                    <span>Fisioterapia Neurológica</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-icon">🦴</span>
+                    <span>Fisioterapia Ortopédica</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-icon">🫁</span>
+                    <span>Fisioterapia Cardiorrespiratória</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-icon">👶</span>
+                    <span>Fisioterapia Pediátrica</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-icon">🏥</span>
+                    <span>Fisioterapia Hospitalar</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-icon">📚</span>
+                    <span>Aprendizado Contínuo</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-icon">✨</span>
+                    <span>Comprometimento</span>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section" id="contact">
+            <h2 class="section-title">Contato</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div>Rua das Hortencias 28, Jardim Primavera, Mauá, São Paulo, 09361-270</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <div>(11) 94923-6764</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <div>veronica121297@gmail.com</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">🎂</div>
+                    <div>12/12/1997</div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p class="footer-text">© 2025 Verônica Amaral - Fisioterapeuta</p>
+        <p>Transformando vidas através da fisioterapia de qualidade</p>
+        <div class="social-links">
+            <a href="#" class="social-link">📱</a>
+            <a href="#" class="social-link">📧</a>
+            <a href="#" class="social-link">👥</a>
+            <a href="#" class="social-link">📸</a>
+        </div>
+    </footer>
+    
+    <script>
+        // Animação de rolagem suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Botão de contato
+        document.getElementById('contactBtn').addEventListener('click', function() {
+            document.getElementById('contact').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+        
+        // Animação de entrada dos elementos
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
